@@ -291,7 +291,7 @@ fun AchievementCard(
                 if (!isUnlocked && currentProgress > 0) {
                     Spacer(modifier = Modifier.height(8.dp))
                     LinearProgressIndicator(
-                        progress = { (currentProgress.toFloat() / targetProgress).coerceAtMost(1f) },
+                        progress = (currentProgress.toFloat() / targetProgress).coerceAtMost(1f),
                         modifier = Modifier.fillMaxWidth(),
                         color = WarningOrange,
                     )

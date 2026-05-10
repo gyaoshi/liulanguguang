@@ -13,6 +13,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -82,7 +83,7 @@ fun SettingsScreen(
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(
-                                if (darkMode) Icons.Default.DarkMode else Icons.Default.LightMode,
+                                if (darkMode) Icons.Default.NightsStay else Icons.Default.WbSunny,
                                 contentDescription = null,
                                 tint = if (darkMode) Color(0xFF6C5CE7) else Color(0xFFFDCB6E)
                             )
@@ -133,7 +134,7 @@ fun SettingsScreen(
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(
-                                if (soundEnabled) Icons.Default.VolumeUp else Icons.Default.VolumeOff,
+                                if (soundEnabled) Icons.Default.Notifications else Icons.Default.NotificationsOff,
                                 contentDescription = null,
                                 tint = if (soundEnabled) WarningOrange else Color.Gray
                             )
@@ -317,7 +318,3 @@ fun SettingsScreen(
         )
     }
 }
-
-@Composable
-private fun Brush.radialGradient(colors: List<Color>): androidx.compose.ui.graphics.Brush =
-    androidx.compose.ui.graphics.Brush.radialGradient(colors)

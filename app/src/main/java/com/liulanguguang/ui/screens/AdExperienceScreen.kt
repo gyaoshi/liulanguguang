@@ -184,7 +184,7 @@ fun SplashAdExperience(ad: AdType, userDataStore: UserDataStore, onBack: () -> U
             Spacer(modifier = Modifier.height(32.dp))
             Box(contentAlignment = Alignment.Center) {
                 CircularProgressIndicator(
-                    progress = { countdown / 5f },
+                    progress = countdown / 5f,
                     modifier = Modifier.size(80.dp),
                     color = Color.White,
                     strokeWidth = 6.dp
@@ -1088,7 +1088,7 @@ fun PreRollAdExperience(ad: AdType, userDataStore: UserDataStore, onBack: () -> 
                 .padding(top = 60.dp)
         ) {
             LinearProgressIndicator(
-                progress = { countdown / 60f },
+                progress = countdown / 60f,
                 modifier = Modifier.width(200.dp),
                 color = Color.White,
                 trackColor = Color.Gray
@@ -1147,14 +1147,6 @@ fun RewardedVideoAdExperience(ad: AdType, userDataStore: UserDataStore, onBack: 
                 Button(
                     onClick = {
                         isWatching = true
-                        kotlinx.coroutines.MainScope().launch {
-                            for (i in 30 downTo 0) {
-                                countdown = i
-                                delay(1000)
-                            }
-                            isWatching = false
-                            reward = true
-                        }
                     },
                     modifier = Modifier.fillMaxWidth()
                 ) {
@@ -1165,6 +1157,14 @@ fun RewardedVideoAdExperience(ad: AdType, userDataStore: UserDataStore, onBack: 
             }
 
             if (isWatching) {
+                LaunchedEffect(Unit) {
+                    for (i in 30 downTo 0) {
+                        countdown = i
+                        delay(1000)
+                    }
+                    isWatching = false
+                    reward = true
+                }
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     CircularProgressIndicator()
                     Spacer(modifier = Modifier.height(16.dp))
@@ -1685,11 +1685,11 @@ fun NotificationAdExperience(ad: AdType, userDataStore: UserDataStore, onBack: (
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Text(text = notification, modifier = Modifier.weight(1f))
-                            Icon(
-                                Icons.Default.Circle,
-                                contentDescription = null,
-                                modifier = Modifier.size(8.dp),
-                                tint = PopupRed
+                            Box(
+                                modifier = Modifier
+                                    .size(8.dp)
+                                    .clip(CircleShape)
+                                    .background(PopupRed)
                             )
                         }
                     }
@@ -2042,7 +2042,7 @@ fun FakeSystemAdExperience(ad: AdType, userDataStore: UserDataStore, onBack: () 
                         Text(text = warning, color = Color.White)
                         Spacer(modifier = Modifier.weight(1f))
                         Icon(
-                            Icons.Default.ChevronRight,
+                            Icons.Default.ArrowForward,
                             contentDescription = null,
                             tint = Color.Gray
                         )
@@ -2218,7 +2218,7 @@ fun SlideAdExperience(ad: AdType, userDataStore: UserDataStore, onBack: () -> Un
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
-                        Icons.Default.ChevronRight,
+                        Icons.Default.ArrowForward,
                         contentDescription = null,
                         tint = Color.White
                     )
@@ -2234,7 +2234,7 @@ fun SlideAdExperience(ad: AdType, userDataStore: UserDataStore, onBack: () -> Un
 
             Spacer(modifier = Modifier.height(24.dp))
             LinearProgressIndicator(
-                progress = { offsetX / targetX },
+                progress = offsetX / targetX,
                 modifier = Modifier.width(260.dp),
                 color = DeceptiveGreen
             )
@@ -2325,7 +2325,7 @@ fun VoiceAdExperience(ad: AdType, userDataStore: UserDataStore, onBack: () -> Un
                     onClick = { /* 静音 */ },
                     enabled = false
                 ) {
-                    Icon(Icons.Default.VolumeUp, contentDescription = null)
+                    Icon(Icons.Default.Notifications, contentDescription = null)
                     Spacer(modifier = Modifier.width(8.dp))
                     Text("静音")
                 }
@@ -2983,10 +2983,3 @@ fun EmptyStateAdExperience(ad: AdType, userDataStore: UserDataStore, onBack: () 
         }
     }
 }
-
-@Composable
-private fun rememberScrollState() = androidx.compose.foundation.rememberScrollState()
-
-@Composable
-private fun Modifier.verticalScroll(state: androidx.compose.foundation.ScrollState) =
-    this.verticalScroll(state)

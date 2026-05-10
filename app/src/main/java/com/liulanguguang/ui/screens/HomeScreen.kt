@@ -58,7 +58,7 @@ fun HomeScreen(
                     CoinDisplay(coins = coins)
                     Spacer(modifier = Modifier.width(8.dp))
                     IconButton(onClick = onAchievementClick) {
-                        Icon(Icons.Default.EmojiEvents, contentDescription = "成就")
+                        Icon(Icons.Default.Star, contentDescription = "成就")
                     }
                     IconButton(onClick = onSettingsClick) {
                         Icon(Icons.Default.Settings, contentDescription = "设置")
