@@ -83,7 +83,7 @@ fun SettingsScreen(
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(
-                                if (darkMode) Icons.Default.NightsStay else Icons.Default.WbSunny,
+                                if (darkMode) Icons.Default.Brightness2 else Icons.Default.Brightness5,
                                 contentDescription = null,
                                 tint = if (darkMode) Color(0xFF6C5CE7) else Color(0xFFFDCB6E)
                             )
@@ -134,7 +134,7 @@ fun SettingsScreen(
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(
-                                if (soundEnabled) Icons.Default.Notifications else Icons.Default.NotificationsOff,
+                                if (soundEnabled) Icons.Default.Notifications else Icons.Default.NotificationsNone,
                                 contentDescription = null,
                                 tint = if (soundEnabled) WarningOrange else Color.Gray
                             )
