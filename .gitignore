@@ -1,7 +1,12 @@
 # Gradle
 .gradle/
 build/
+
+# Keep gradle wrapper
+!gradle/wrapper/
+gradle/wrapper/*
 !gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -26,8 +31,11 @@ captures/
 *.aab
 *.ap_
 *.dex
-*.jar
 *.class
+
+# Jars (except gradle wrapper)
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
 
 # Generated files
 bin/
