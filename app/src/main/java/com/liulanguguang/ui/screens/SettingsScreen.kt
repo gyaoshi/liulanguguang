@@ -82,10 +82,9 @@ fun SettingsScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Icon(
-                                if (darkMode) Icons.Default.Brightness2 else Icons.Default.Brightness5,
-                                contentDescription = null,
-                                tint = if (darkMode) Color(0xFF6C5CE7) else Color(0xFFFDCB6E)
+                            Text(
+                                text = if (darkMode) "🌙" else "☀️",
+                                fontSize = 24.sp
                             )
                             Spacer(modifier = Modifier.width(12.dp))
                             Column {
@@ -133,10 +132,9 @@ fun SettingsScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Icon(
-                                if (soundEnabled) Icons.Default.Notifications else Icons.Default.NotificationsNone,
-                                contentDescription = null,
-                                tint = if (soundEnabled) WarningOrange else Color.Gray
+                            Text(
+                                text = if (soundEnabled) "🔔" else "🔕",
+                                fontSize = 24.sp
                             )
                             Spacer(modifier = Modifier.width(12.dp))
                             Column {
